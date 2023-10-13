@@ -43,7 +43,7 @@ export const sendMessage = async (req, res) => {
 
             // Update the latestMessage in the Chat model
             await Chat.update(
-                { latestMessageId: message.id },
+                { latestmessageId: message.id },
                 {
                     where: { id: chatId }, // Assuming chatId is the Chat's ID
                 }

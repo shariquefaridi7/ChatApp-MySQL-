@@ -114,16 +114,22 @@ const MyChat = ({ fetchAgain }) => {
                                     key={chat.id}
                                 >
                                     <Text style={{ color: "black" }}>
-                                        {
 
-                                        }
                                         {!chat.isGroupChat ? (
                                             getSender(loggedUser, chat.users)
                                         ) :
 
-                                            chat.chatName
+                                            <b> {chat.chatName}</b>
+
+
 
                                         }
+                                    </Text>
+                                    <Text style={{ color: "black" }}>
+                                        {
+                                            chat.isGroupChat ? (chat.latestMessage ? <span><b>{chat.latestMessage.sender.name}</b>{" : "}{chat.latestMessage.content}</span> : <></>) : (<span>{chat.latestMessage.content}</span>)
+                                        }
+
                                     </Text>
                                 </Box>
                             ))}

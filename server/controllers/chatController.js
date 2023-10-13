@@ -12,7 +12,7 @@ export const accesChat = async (req, res) => {
         console.log("UserId params not sent with request");
         return res.sendStatus(400);
     }
-    console.log(req.userId, userId);
+
 
     // check chats exist or not
     try {

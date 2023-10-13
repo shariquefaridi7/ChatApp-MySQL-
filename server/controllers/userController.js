@@ -11,13 +11,15 @@ dotenv.config();
 
 export const signupData = async (req, res) => {
 
-    const { name, email, password, confirmPass, pic } = req.body;
+    let { name, email, password, confirmPass, pic } = req.body;
 
 
     // check user is exist or not.
 
     const userCheck = await userData.findOne({ where: { email } });
-
+    if (!pic) {
+        pic = "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+    }
     if (!name || !email || !password || !confirmPass) {
         return res.json({ message: "Please Fill All Fields" })
     } else {

@@ -7,7 +7,8 @@ import { userData } from './models/userModel.js';
 import { Message } from './models/messageModel.js';
 import { Chat } from './models/chatModel.js';
 import messageRouter from './routes/messageRoute.js';
-import cors from 'cors'
+import cors from 'cors';
+import { Server } from 'socket.io';
 
 dotenv.config();
 
@@ -40,8 +41,57 @@ userData.hasMany(Chat, { as: "groupAdmin", foreignKey: "adminId" });
 
 
 
-sequelize.sync({ force: false }).then(() => console.log("DB Connect")).catch((error) => console.log(error))
+sequelize.sync().then(() => console.log("DB Connect")).catch((error) => console.log(error))
 
-app.listen(process.env.PORT || 4000, () => {
+const connection = app.listen(process.env.PORT || 4000, () => {
     console.log("Server Connect 4000")
+})
+
+
+const io = new Server(connection, {
+    pingTimeout: 60000,
+    cors: {
+        origin: "http://127.0.0.1:5173",
+        // credentials: true,
+    },
+});
+
+
+io.on("connection", (socket) => {
+    console.log("connected to socket.io");
+    socket.on("setup", (userData) => {
+        socket.join(userData.id);
+        console.log(userData.id);
+        socket.emit("connected");
+    });
+
+    socket.on("join chat", (room) => {
+        socket.join(room);
+        console.log("User joined room :" + room);
+    });
+
+    socket.on("typing", (room) => socket.in(room).emit("typing"))
+    socket.on("stop typing", (room) => socket.in(room).emit("stop typing"))
+
+    socket.on("new message", (newMessageRecieved) => {
+        var chat = newMessageRecieved.chat;
+
+        if (!chat.users) return console.log("chat.users is not define");
+        chat.users.forEach(user => {
+            if (user.usersChat.userId == newMessageRecieved.senderId) return;
+
+
+            socket.in(user.usersChat.userId).emit("message is recieved", newMessageRecieved);
+
+        })
+
+
+    });
+
+    socket.off("setup", () => {
+        console.log("USER DISCONNECTED");
+        socket.leave(userData.id);
+    });
+
+
 })
