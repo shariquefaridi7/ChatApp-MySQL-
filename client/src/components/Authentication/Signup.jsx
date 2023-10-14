@@ -86,7 +86,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
-        const resp = await axios.post("http://localhost:4000/signup", { name: userData.name, password: userData.password, confirmPass: userData.confirmPass, email: userData.email, pic: userData.pic });
+        const resp = await axios.post("https://chatappbackend-uxzo.onrender.com/signup", { name: userData.name, password: userData.password, confirmPass: userData.confirmPass, email: userData.email, pic: userData.pic });
         if (resp.data.message) {
             toast({
                 title: resp.data.message,
