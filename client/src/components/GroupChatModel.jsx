@@ -45,7 +45,7 @@ const GroupChatModal = ({ children }) => {
                     Authorization: `Bearer ${token}`,
                 },
             };
-            const { data } = await axios.get(`http://localhost:4000/allusers?search=${search}`, config);
+            const { data } = await axios.get(`https://chatappbackend-uxzo.onrender.com/allusers?search=${search}`, config);
 
             setLoading(false);
 
