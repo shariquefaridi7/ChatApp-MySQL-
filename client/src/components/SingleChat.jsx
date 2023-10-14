@@ -14,7 +14,7 @@ import io from 'socket.io-client';
 import animationData from "./Animation/typing.json";
 import Lottie from "react-lottie";
 
-const ENDPOINT = "http://localhost:4000";
+const ENDPOINT = "https://chatappbackend-uxzo.onrender.com";
 var socket, selectedChatCompare;
 
 
