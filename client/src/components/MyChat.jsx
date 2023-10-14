@@ -127,7 +127,7 @@ const MyChat = ({ fetchAgain }) => {
                                     </Text>
                                     <Text style={{ color: "black" }}>
                                         {
-                                            chat.isGroupChat ? (chat.latestMessage ? <span><b>{chat.latestMessage.sender.name}</b>{" : "}{chat.latestMessage.content}</span> : <></>) : (<span>{chat.latestMessage.content}</span>)
+                                            chat.isGroupChat ? (chat.latestMessage ? <span><b>{chat.latestMessage.sender.name}</b>{" : "}{chat.latestMessage.content}</span> : <></>) : (<span>{chat.latestMessage?.content}</span>)
                                         }
 
                                     </Text>
