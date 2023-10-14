@@ -35,7 +35,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        const resp = await axios.post("http://localhost:4000/signin", { password: userData.password, email: userData.email, });
+        const resp = await axios.post("https://chatappbackend-uxzo.onrender.com/signin", { password: userData.password, email: userData.email, });
         if (resp.data.message) {
             toast({
                 title: resp.data.message,
