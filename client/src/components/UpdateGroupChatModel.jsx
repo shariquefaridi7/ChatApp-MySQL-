@@ -52,7 +52,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                 },
             };
             const { data } = await axios.put(
-                `http://localhost:4000/chats/groupremove`,
+                `https://chatappbackend-uxzo.onrender.com/chats/groupremove`,
                 {
                     chatId: selectedChat.id,
                     userId: user1.id,
@@ -112,7 +112,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                 },
             };
             const { data } = await axios.put(
-                `http://localhost:4000/chats/groupadd`,
+                `https://chatappbackend-uxzo.onrender.com/chats/groupadd`,
                 {
                     chatId: selectedChat.id,
                     userId: user1.id,
@@ -150,7 +150,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                 },
             };
             const { data } = await axios.put(
-                `http://localhost:4000/chats/rename`,
+                `https://chatappbackend-uxzo.onrender.com/chats/rename`,
                 {
                     chatId: selectedChat.id,
                     chatName: groupChatName,
@@ -190,7 +190,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                     Authorization: `Bearer ${token}`,
                 },
             };
-            const { data } = await axios.get(`http://localhost:4000/allusers?search=${search}`, config);
+            const { data } = await axios.get(`https://chatappbackend-uxzo.onrender.com/allusers?search=${search}`, config);
             console.log(data);
             setLoading(false);
             setSearchResult(data);
