@@ -23,7 +23,7 @@ const MyChat = ({ fetchAgain }) => {
                 },
             };
 
-            const { data } = await axios.get(`http://localhost:4000/chats`, config);
+            const { data } = await axios.get(`https://chatappbackend-uxzo.onrender.com/chats`, config);
 
             setChats(data);
             console.log(data);
