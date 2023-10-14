@@ -82,7 +82,7 @@ const GroupChatModal = ({ children }) => {
                 },
             };
             const { data } = await axios.post(
-                `http://localhost:4000/chats/group`,
+                `https://chatappbackend-uxzo.onrender.com/chats/group`,
                 {
                     name: groupChatName,
                     users: JSON.stringify(selectedUsers.map((u) => u.id)),
@@ -139,7 +139,7 @@ const GroupChatModal = ({ children }) => {
 
     return (
         <div>
-            <span onClick={onOpen}>{children}</span>
+            <span onClick={onOpen}>{children} </span>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
