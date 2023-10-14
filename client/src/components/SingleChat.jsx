@@ -55,7 +55,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             setLoading(true);
 
             const { data } = await axios.get(
-                `http://localhost:4000/message/${selectedChat.id}`,
+                `https://chatappbackend-uxzo.onrender.com/message/${selectedChat.id}`,
                 config
             );
             setMessages(data);
@@ -118,7 +118,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 };
                 setNewMessage("");
                 const { data } = await axios.post(
-                    "http://localhost:4000/message",
+                    "https://chatappbackend-uxzo.onrender.com/message",
                     {
                         content: newMessage,
                         chatId: selectedChat.id,
