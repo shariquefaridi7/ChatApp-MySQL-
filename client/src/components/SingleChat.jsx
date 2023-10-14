@@ -11,8 +11,7 @@ import { useToast } from "@chakra-ui/react";
 import "./style.css"
 import ScrollableChat from "./ScrollableChat";
 import io from 'socket.io-client';
-import animationData from "./Animation/typing.json";
-import Lottie from "react-lottie";
+
 
 const ENDPOINT = "https://chatappbackend-uxzo.onrender.com";
 var socket, selectedChatCompare;
@@ -21,15 +20,6 @@ var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
-
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice",
-        },
-    };
 
     const { user, selectedChat, setSelectedChat, token, notification, setNotification } = ChatState();
     const [messages, setMessages] = useState([]);
@@ -240,14 +230,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                             }
 
                             <FormControl onKeyDown={sendMessage} isRequired mt={3}>
-                                {isTyping ? <div >
-                                    <Lottie
-                                        options={defaultOptions}
-                                        width={70}
-
-                                        style={{ marginBottom: 15, marginLeft: 0, size: "10px" }}
-
-                                    />
+                                {isTyping ? <div style={{ color: "green" }} >
+                                    Typing...
+                                    <div />
 
                                 </div> : ""}
                                 <Input variant="filled" bg="#E0E0E0" placeholder='Enter a message' onChange={typeHandler} value={newMessage} />
