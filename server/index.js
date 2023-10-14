@@ -51,7 +51,7 @@ const connection = app.listen(process.env.PORT || 4000, () => {
 const io = new Server(connection, {
     pingTimeout: 60000,
     cors: {
-        origin: "http://127.0.0.1:5173",
+        origin: "https://chattingapp-96g6.onrender.com",
         // credentials: true,
     },
 });
