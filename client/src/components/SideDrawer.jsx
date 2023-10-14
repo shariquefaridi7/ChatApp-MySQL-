@@ -70,7 +70,7 @@ const SideDrawer = () => {
                 },
             };
 
-            const { data } = await axios.get(`http://localhost:4000/allusers?search=${search}`, config);
+            const { data } = await axios.get(`https://chatappbackend-uxzo.onrender.com/allusers?search=${search}`, config);
             console.log(data);
             setLoading(false);
             setSearchResult(data);
@@ -97,7 +97,7 @@ const SideDrawer = () => {
                     Authorization: `Bearer ${token}`,
                 },
             };
-            const { data } = await axios.post(`http://localhost:4000/chats/`, { userId }, config);
+            const { data } = await axios.post(`https://chatappbackend-uxzo.onrender.com/chats/`, { userId }, config);
 
 
             if (!chats.find((c) => c.id === data.id)) setChats([data, ...chats]);
